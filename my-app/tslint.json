@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "import-sources-order": "any",
+    "named-imports-order": "any"
+},
+"jsRules": {
+  "object-literal-sort-keys": false
+},
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  }
+}
