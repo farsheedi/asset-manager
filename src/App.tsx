@@ -4,6 +4,7 @@ import Inputs from './components/inputs';
 // import Table from './components/table';
 import logo from './logocontoso.png';
 
+const synth = window.speechSynthesis;
 
 interface IState {
   currentAsset: any,
@@ -59,7 +60,11 @@ class App extends React.Component<{},IState> {
     for(let i = 0; i < data.length; i++){
       net_worth += Number(data[i].value);
     }
+    var msg = "Your net worth is" +  net_worth + "dollars.";
     console.log("net worth is "+net_worth);
+    var speak = new SpeechSynthesisUtterance(msg);
+    synth.speak(speak);
+
 
     this.setState({
       net_worth: net_worth as any,
@@ -108,27 +113,28 @@ class App extends React.Component<{},IState> {
     //this.getAssets(e);
   }
 
-  // clearAssets= async (e: any) => {
+/*                                      unable to implement
+  clearAssets= async (e: any) => {
 
-  //   e.preventDefault();
-  //   for (let i = 0; i < this.state.asset_size; i++) {
-  //     const url = "https://farsheedbankapi.azurewebsites.net/api/Bank/" + i
+    e.preventDefault();
+    for (let i = 0; i < this.state.asset_size; i++) {
+      const url = "https://farsheedbankapi.azurewebsites.net/api/Bank/" + i
 
-  //     fetch(url, {
-  //       method: 'DELETE'
-  //     })
-  //       .then((response: any) => {
-  //         if (!response.ok) {
-  //           // Error Response
-  //           alert(response.statusText)
-  //         }
-  //         else {
-  //           console.log("else")
-  //         }
-  //       })
-  //   }
-  // }
-
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then((response: any) => {
+          if (!response.ok) {
+            // Error Response
+            alert(response.statusText)
+          }
+          else {
+            console.log("else")
+          }
+        })
+    }
+  }
+*/
 
   public render() {
     return (
